@@ -30,6 +30,12 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  @override
+  dispose(){
+    homeVM?.removeListener(homeListner);
+    super.dispose();
+  }
+
   homeListner() {
     if (homeVM?.response != null) {
       if (homeVM!.response.isNotEmpty) {
@@ -79,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
-                                    childAspectRatio: (1 / 0.95)),
+                                    childAspectRatio: (1 / 1)),
                             shrinkWrap: true,
                             itemCount: citiyWeatherList.length,
                             itemBuilder: (context, index) => HomeItemWidget(
